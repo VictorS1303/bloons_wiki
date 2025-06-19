@@ -1,0 +1,19 @@
+---
+import Layout from "../layouts/Layout.astro"
+import Navigation from "../components/Navigation.astro"
+
+const navItems = [
+  {
+    href: "gameelements",
+    text: "Game Elements",
+  },
+  {
+    href: "walkthroughs",
+    text: "Walkthroughs",
+  },
+]
+---
+
+<Layout>
+  <Navigation class="main-nav" navItems={navItems} />
+</Layout>

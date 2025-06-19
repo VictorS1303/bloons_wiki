@@ -5,7 +5,11 @@
 :root
 {
     --headings-font: 'Oetztype', sans-serif;
+    --nav-font: 'Oetztype', sans-serif;
     --paragraph-font: 'Poppins', sans-serif;
+
+    /* Colors */
+    --secondary-color: #fefea3;
 }
 
 h1, h2, h3, h4, h5, h6
@@ -16,4 +20,21 @@ h1, h2, h3, h4, h5, h6
 p
 {
     font-family: var(--paragraph-font);
+}
+
+li
+{
+    font-family: var(--nav-font);
+}
+
+.active
+{
+    right: 0;
+    transition: right .4s ease-in-out;
+}
+
+.active-toggle-btn
+{
+    right: 270px;
+    transition: right .4s ease-in-out;
 }

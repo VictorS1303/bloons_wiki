@@ -1,0 +1,11 @@
+---
+const { class: className, id: id } = Astro.props
+import Button from "./Button.astro"
+---
+
+<Button
+  class="mobile-nav-toggle-btn absolute top-6 right-6 block text-2xl cursor-pointer text-black z-[10000] md:hidden transition-right duration-400 ease-in"
+  id="mobile_nav_toggle_button"
+>
+  <i class="fas fa-bars"></i>
+</Button>

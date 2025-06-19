@@ -1,0 +1,8 @@
+---
+const { class: className, id: id, src, alt } = Astro.props
+---
+
+<section class=`${className} h-screen w-screen`>
+  {src && <img src={src} alt={alt} />}
+  <slot />
+</section>

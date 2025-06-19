@@ -1,6 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro"
 import Navigation from "../components/Navigation.astro"
+import Section from "../components/Section.astro"
+import CloudsContainer from "../components/CloudsContainer.astro"
+import Header from "../components/Header.astro"
 
 const navItems = [
   {
@@ -14,6 +17,37 @@ const navItems = [
 ]
 ---
 
-<Layout>
+<Layout title="Bloons Wiki">
   <Navigation class="main-nav" navItems={navItems} />
+
+  <Section class="bg-[#7bcaff] overflow-hidden">
+    <Header
+      class="absolute top-[40%] left-[50%] -translate-x-1/2 -translate-y-1/2 z-[10000]"
+      headerText="The page that has anything related to the original Bloons games"
+    >
+      <h1 class="text-8xl">
+        <span class="text-[var(--landing-page-b-text-color)] text-shadow-md"
+          >B</span
+        >
+        <span class="text-[var(--landing-page-l-text-color)] text-shadow-md"
+          >L</span
+        >
+        <span
+          class="text-[var(--landing-page-first-o-text-color)] text-shadow-md"
+          >O</span
+        >
+        <span
+          class="text-[var(--landing-page-secondary-o-text-color)] text-shadow-md"
+          >O</span
+        >
+        <span class="text-[var(--landing-page-n-text-color)] text-shadow-md"
+          >N</span
+        >
+        <span class="text-[var(--landing-page-s-text-color)] text-shadow-md"
+          >S</span
+        >
+      </h1>
+    </Header>
+    <CloudsContainer />
+  </Section>
 </Layout>

@@ -1,0 +1,88 @@
+---
+const { class: className, id: id } = Astro.props
+---
+
+<section
+  class=`${className} clouds-container relative flex flex-col justify-between w-full h-[80vh] translate-y-[20%] overflow-hidden`
+  id="clouds_container"
+>
+</section>
+
+<style>
+  .cloud-container {
+    animation: moveCloud linear infinite;
+  }
+
+  @keyframes moveCloud {
+    from {
+      transform: translateX(-100vw);
+    }
+    to {
+      transform: translateX(100vw);
+    }
+  }
+</style>
+
+<script>
+  const cloudsContainer = document.querySelector(".clouds-container")
+
+  // Array of animation durations corresponding to the commented-out CSS
+  const animationDurations = ["20s", "25s", "23s", "23s"]
+
+  function generateCloudContainer(cloudContainerClasses, animationDuration) {
+    const cloudContainer = document.createElement("div")
+
+    // Set the animation duration dynamically
+    cloudContainer.style.animation = `moveCloud ${animationDuration} linear infinite`
+    cloudContainer.className = cloudContainerClasses
+
+    // Listen for animation iteration
+    cloudContainer.addEventListener("animationiteration", () => {
+      resetCloud(cloudContainer)
+    })
+
+    // Generate and append a random cloud image
+    const cloudImage = generateRandomCloud()
+    cloudContainer.appendChild(cloudImage)
+
+    cloudsContainer?.append(cloudContainer)
+  }
+
+  function resetCloud(cloudContainer) {
+    // Reset cloud position and size
+    const randomTopPosition = generateRandomTopPosition()
+    const randomCloudSize = generateRandomCloudSize()
+
+    cloudContainer.style.top = `${randomTopPosition}%`
+    const cloudImage = cloudContainer.querySelector("img")
+    cloudImage.src = `/images/clouds/cloud_${randomCloudSize}.webp`
+  }
+
+  function generateRandomCloudSize() {
+    const cloudSizes = ["mini", "regular", "big"]
+    return cloudSizes[Math.floor(Math.random() * cloudSizes.length)]
+  }
+
+  function generateRandomCloud() {
+    const cloudImage = document.createElement("img")
+    const randomCloudSize = generateRandomCloudSize()
+    cloudImage.src = `/images/clouds/cloud_${randomCloudSize}.webp`
+    return cloudImage
+  }
+
+  function generateRandomTopPosition() {
+    const randomTopPositions = [10, 20, 30, 40, 50]
+    return randomTopPositions[
+      Math.floor(Math.random() * randomTopPositions.length)
+    ]
+  }
+
+  // Generate initial clouds with corresponding durations
+  for (let i = 0; i < animationDurations.length; i++) {
+    const randomTopPosition = generateRandomTopPosition()
+    generateCloudContainer(
+      `cloud-container absolute top-[${randomTopPosition}%] scale-.95 z-1`,
+      animationDurations[i], // Pass the animation duration
+    )
+  }
+</script>

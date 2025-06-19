@@ -10,6 +10,14 @@
 
     /* Colors */
     --secondary-color: #fefea3;
+
+    /* Landing Page Hero Text Colors */
+    --landing-page-b-text-color: #37ACFD;
+    --landing-page-l-text-color: #FFDD77;
+    --landing-page-first-o-text-color: #9E9E9E;
+    --landing-page-secondary-o-text-color: #C67CCB;
+    --landing-page-n-text-color: #95DA95;
+    --landing-page-s-text-color: #F1959C;
 }
 
 h1, h2, h3, h4, h5, h6

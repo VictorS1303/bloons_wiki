@@ -1,6 +1,10 @@
 ---
 import Layout from "../layouts/Layout.astro"
 import Navigation from "../components/Navigation.astro"
+import Section from "../components/Section.astro"
+import SectionHeading from "../components/SectionHeading.astro"
+import Header from "../components/Header.astro"
+import BloonsContainer from "../components/BloonsContainer.astro"
 
 const navItems = [
   {
@@ -12,8 +16,69 @@ const navItems = [
     text: "Walkthroughs",
   },
 ]
+
+const bloons = [
+  {
+    img: "/images/bloons/blue_bloon.webp",
+    alt: "blue bloon",
+  },
+  {
+    img: "/images/bloons/red_bloon.webp",
+    alt: "blue bloon",
+  },
+  {
+    img: "/images/bloons/green_bloon.webp",
+    alt: "blue bloon",
+  },
+  {
+    img: "/images/bloons/yellow_bloon.webp",
+    alt: "blue bloon",
+  },
+  {
+    img: "/images/bloons/extra_dart_bloon.webp",
+    alt: "blue bloon",
+  },
+  {
+    img: "/images/bloons/helium_bloon.webp",
+    alt: "blue bloon",
+  },
+  {
+    img: "/images/bloons/ice_bloon.webp",
+    alt: "blue bloon",
+  },
+  {
+    img: "/images/bloons/laser_bloon.webp",
+    alt: "blue bloon",
+  },
+  {
+    img: "/images/bloons/mine_bloon.webp",
+    alt: "blue bloon",
+  },
+]
 ---
 
-<Layout>
+<Layout title="Walkthroughs">
   <Navigation class="main-nav" navItems={navItems} />
+
+  <Section class="bg-[#7bcaff] overflow-hidden flex flex-col">
+    <div class="flex flex-col justify-center w-screen">
+      <Header
+        class="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 z-[10000] md:top-[40%]"
+        headerText="Written step-by-step walkthroughs with images and videos to all stages and all games"
+      >
+        <h1 class="text-white text-4xl md:text-8xl">Walkthroughs</h1>
+      </Header>
+      <BloonsContainer
+        class="hidden container bloons-container mt-20 ml-[50%] -translate-x-1/2 w-screen h-screen md:flex md:items-center md:justify-center md:align-center gap-4"
+        bloons={bloons}
+      />
+    </div>
+  </Section>
+
+  <Section class="walkthroughs" id="walkthroughs">
+    <SectionHeading
+      sectionHeadingText="Walkthroughs"
+      class="text-red-400 font-[var(--headings-font)]"
+    />
+  </Section>
 </Layout>

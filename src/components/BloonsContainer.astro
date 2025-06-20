@@ -1,0 +1,41 @@
+---
+const {class: className, id: id, bloons = []} = Astro.props
+---
+
+<article class=`${className}` id={id}>
+  {
+    bloons.map((bloon, index) => (
+      <div class={`wiggle-bloon ${index % 2 === 0 ? 'wiggle-bloon-odd' : 'wiggle-bloon-even'}`}>
+        <img src={bloon.img} alt={bloon.alt}/>
+      </div>
+    ))
+  }
+</article>
+
+<style>
+  .wiggle-bloon-odd {
+    animation: wiggleOddBloons 4s linear infinite; 
+  }
+
+  @keyframes wiggleOddBloons {
+    0%, 100% {
+      transform: rotateZ(-10deg);
+    }
+    50% {
+      transform: rotateZ(10deg);
+    }
+  }
+
+  .wiggle-bloon-even {
+    animation: wiggleEvenBloons 4s linear infinite; 
+  }
+
+  @keyframes wiggleEvenBloons {
+    0%, 100% {
+      transform: rotateZ(10deg);
+    }
+    50% {
+      transform: rotateZ(-10deg);
+    }
+  }
+</style>

@@ -1,0 +1,10 @@
+---
+import Section from './Section.astro'
+import SectionHeading from './SectionHeading.astro'
+
+const { class: className, id: id, sectionHeaderText } = Astro.props
+---
+
+<Section>
+  <SectionHeading class="text-red-600" sectionHeadingText={sectionHeaderText} />
+</Section>

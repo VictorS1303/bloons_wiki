@@ -1,0 +1,15 @@
+---
+import Section from "../components/Section.astro"
+import BackButton from "../components/BackButton.astro"
+const { class: className, id: id, game } = Astro.props
+---
+
+<Section class="bg-[#7bcaff] h-screen w-screen grid place-content-center">
+  <BackButton />
+  <header class="flex flex-col justify-center text-center px-8">
+    <h1 class="text-4xl text-white md:text-6xl">{game}</h1>
+    <p class="text-2xl text-white mt-8">
+      Written guides with images and videos for each level of {game}
+    </p>
+  </header>
+</Section>

@@ -1,0 +1,21 @@
+---
+import Button from "./Button.astro"
+
+const { class: className, id: id } = Astro.props
+---
+
+<Button class="back-btn absolute top-6 left-6 text-3xl text-white cursor-pointer hover:text-[var(--secondary-color)]" id="back_btn">
+  <i class="fas fa-arrow-left"></i>
+</Button>
+
+
+<script>
+  const backBtn = document.querySelector('#back_btn')
+
+  backBtn?.addEventListener('click', goToPreviousPage)
+
+  function goToPreviousPage()
+  {
+    history.go(-1)
+  }
+</script>

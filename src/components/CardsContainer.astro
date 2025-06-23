@@ -1,5 +1,17 @@
 ---
-const {class: className, id: id, cards = []} = Astro.props
+import Card from "./Card.astro"
+const { class: className, id, src, cards = [] } = Astro.props
 ---
 
-<article class=`${className} h-[800px] w-full` id={id}></article>
+<article
+  class={`${className} h-[600px] overflow-x-scroll w-[90%] flex flex-wrap gap-12 justify-center mx-auto my-12 md:h-fit`}
+  id={id}
+>
+  {
+    cards.map((card) => (
+      <a class="block h-[225px]" href={card.href}>
+        <Card src={card.src} cardText={card.cardText} />
+      </a>
+    ))
+  }
+</article>

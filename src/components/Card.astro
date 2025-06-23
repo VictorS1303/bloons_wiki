@@ -1,0 +1,24 @@
+---
+import Overlay from "./Overlay.astro"
+import CardText from "./CardText.astro"
+const { class: className, id, src, alt, cardText } = Astro.props
+---
+
+<article
+  class={`${className} group relative h-[225px] w-[275px] cursor-pointer overflow-hidden`}
+  id={id}
+>
+  <!-- Overlay with conditional visibility -->
+  <Overlay
+    class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity rounded-lg pointer-events-none"
+  />
+
+  <!-- Card Text -->
+  <CardText
+    class="transition-top delay-100 duration-400 ease-in group-hover:top-[50%]"
+    cardText={cardText}
+  />
+
+  <!-- Card Image -->
+  <img src={src} class="w-full h-full object-fill rounded-lg" alt={alt} />
+</article>

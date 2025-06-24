@@ -2,7 +2,10 @@
 const { class: className, id: id, sectionHeadingText } = Astro.props
 ---
 
-<header class=`${className} text-center text-3xl uppercase mt-16 text-shadow-md` id={id}>
+<header
+  class=`${className} text-center text-3xl mt-16 text-shadow-md capitalize`
+  id={id}
+>
   <h2>
     {sectionHeadingText}
   </h2>

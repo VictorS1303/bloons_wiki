@@ -1,23 +1,41 @@
 ---
-import { cards } from "../walkthroughs.astro"
+import { games } from "../../js/games.js"
 import Layout from "../../layouts/Layout.astro"
 import GameWalkthroughHero from "../../components/GameWalkthroughHero.astro"
 import LevelOverviewContainer from "../../components/LevelOverviewContainer.astro"
+import CardsContainer from "../../components/CardsContainer.astro"
 
 export function getStaticPaths() {
-  return cards.map((card) => {
-    const slug = card.href.split("/").pop() // Extract slug from href
-    return {
-      params: { slug }, // Slug used for dynamic routing
-      props: { game: card.cardText }, // Pass game data
-    }
-  })
+  return games.map((game) => ({
+    params: { slug: game.slug },
+    props: {
+      game: game.slug,
+      levels: game.levels,
+    },
+  }))
 }
 
-const { game } = Astro.props
+const { game, levels = [] } = Astro.props
+
+// Format the game name
+const formattedGame = formatGameName(game)
+
+function formatGameName(slug) {
+  return slug
+    .replace(/-/g, " ") // Replace hyphens with spaces
+    .replace(/\b\w/g, (char) => char.toUpperCase()) // Capitalize each word
+}
 ---
 
-<Layout title=`Walkthrough - {game}`>
-  <GameWalkthroughHero game={game} />
-  <LevelOverviewContainer sectionHeaderText={game} />
+<Layout title=`Walkthrough - ${formattedGame}`>
+  <GameWalkthroughHero game={formattedGame} />
+  <LevelOverviewContainer sectionHeaderText={formattedGame} />
+  <CardsContainer
+    class="h-[400px]"
+    cards={levels.map((level) => ({
+      href: level.href,
+      src: level.levelImage,
+      cardText: level.levelName,
+    }))}
+  />
 </Layout>

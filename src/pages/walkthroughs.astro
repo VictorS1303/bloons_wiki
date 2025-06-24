@@ -125,7 +125,7 @@ export const cards = [
 <Layout title="Walkthroughs">
   <Navigation class="main-nav" navItems={navItems} />
 
-  <Section class="bg-[#7bcaff] overflow-hidden flex flex-col">
+  <Section class="bg-[#7bcaff] h-screen w-screen overflow-hidden flex flex-col">
     <div class="flex flex-col justify-center w-screen">
       <Header
         class="absolute top-[50%] left-[50%] -translate-x-1/2 -translate-y-1/2 z-[10000] md:top-[40%]"
@@ -139,13 +139,11 @@ export const cards = [
       />
     </div>
   </Section>
-
-  <Section class="walkthroughs" id="walkthroughs">
+  <Section>
     <SectionHeading
       sectionHeadingText="Walkthroughs"
       class="text-red-400 font-[var(--headings-font)]"
     />
-
-    <CardsContainer cards={cards} />
+    <CardsContainer class="h-[200px]" cards={cards} />
   </Section>
 </Layout>
